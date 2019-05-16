@@ -105,6 +105,9 @@
 
 // 撤回一步
 - (void)withdrawAStep {
+    if (_allDataArr.count == 0) {
+        return;
+    }
     _currentModel = nil;
     _hasWithdraw = YES;
     [self.canceledDataArr addObject:_allDataArr.lastObject];
@@ -117,6 +120,9 @@
 
 // 前进一步
 - (void)forwardAStep {
+    if (_canceledDataArr.count == 0) {
+        return;
+    }
     _currentModel = nil;
     [_allDataArr addObject:_canceledDataArr.lastObject];
     [_canceledDataArr removeLastObject];
